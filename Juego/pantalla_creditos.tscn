@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://be6krjuhwxqqd"]
+
+[ext_resource type="Script" path="res://Juego/pantalla_creditos.gd" id="1_tnh0k"]
+[ext_resource type="Texture2D" uid="uid://c4ss4xde5x2th" path="res://Arte/Texturas/galaxia_3.png" id="2_gk11v"]
+[ext_resource type="FontFile" uid="uid://jy3qjpugf4jw" path="res://Fonts/Xolonium-Regular.ttf" id="2_l86b1"]
+[ext_resource type="Texture2D" uid="uid://cldrf30ertnx6" path="res://Arte/Texturas/BotonVolver.png" id="4_8o877"]
+
+[node name="PantallaAyuda" type="Node2D"]
+script = ExtResource("1_tnh0k")
+
+[node name="Sprite2DFondo" type="Sprite2D" parent="."]
+position = Vector2(638.5, 361.5)
+scale = Vector2(2.40262, 1.37356)
+texture = ExtResource("2_gk11v")
+
+[node name="ColorRect" type="ColorRect" parent="Sprite2DFondo"]
+offset_left = -266.0
+offset_top = -261.0
+offset_right = 267.0
+offset_bottom = 261.0
+color = Color(0.768627, 0.780392, 0.635294, 0)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 88.0
+offset_top = 200.0
+offset_right = 1186.0
+offset_bottom = 517.0
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1.92523e-06, 0.734826, 0.900049, 1)
+theme_override_fonts/font = ExtResource("2_l86b1")
+theme_override_font_sizes/font_size = 61
+text = "Alejandro J Kentros
+
+Programación de VideoJuegos III
+
+2024"
+horizontal_alignment = 1
+
+[node name="Volver" type="Button" parent="."]
+offset_left = 1080.0
+offset_top = 608.0
+offset_right = 1176.0
+offset_bottom = 705.0
+theme_override_fonts/font = ExtResource("2_l86b1")
+theme_override_font_sizes/font_size = 46
+icon = ExtResource("4_8o877")
+
+[connection signal="pressed" from="Volver" to="." method="_on_volver_pressed"]

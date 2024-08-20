@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfkerijwn0jt7"]
+
+[ext_resource type="Script" path="res://Juego/audio_manager.gd" id="1_hxfil"]
+[ext_resource type="AudioStream" uid="uid://cco8l8ieiquef" path="res://Audios/Musica_Inicio.ogg" id="2_7auvw"]
+[ext_resource type="AudioStream" uid="uid://oh3m01jvfpr4" path="res://Audios/Musica_Galaxia.ogg" id="3_0lge4"]
+[ext_resource type="AudioStream" uid="uid://bbgcjux8lnwqh" path="res://Audios/Sonido_colisiona_numero_correcto.ogg" id="4_44888"]
+[ext_resource type="AudioStream" uid="uid://coyqya75sinpv" path="res://Audios/Sonido_colisiona_numero_incorrecto.ogg" id="5_5f4kg"]
+[ext_resource type="AudioStream" uid="uid://b7owxfsbvcb2a" path="res://Audios/Sonido_colision_ignorancia.ogg" id="6_s25sw"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_hxfil")
+
+[node name="MusicaInicio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_7auvw")
+
+[node name="MusicaGalaxia" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0lge4")
+volume_db = -4.16
+
+[node name="SonidoColisionNumeroCorrecto" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_44888")
+
+[node name="SonidoColisionNumeroIncorrecto" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_5f4kg")
+
+[node name="SonidoColisionIgnorancia" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_s25sw")

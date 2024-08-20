@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhgulm4nlmp8h"]
+
+[ext_resource type="FontFile" uid="uid://jy3qjpugf4jw" path="res://Fonts/Xolonium-Regular.ttf" id="1_86abn"]
+[ext_resource type="Script" path="res://Numero/numero.gd" id="1_xtpw6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cedwp"]
+size = Vector2(33, 37)
+
+[node name="Numero" type="RigidBody2D" groups=["Numero"]]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_xtpw6")
+
+[node name="LabelNumero" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 33.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0, 0.968393, 0, 1)
+theme_override_fonts/font = ExtResource("1_86abn")
+theme_override_font_sizes/font_size = 54
+text = "6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16.5, 22.5)
+shape = SubResource("RectangleShape2D_cedwp")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(16.5, 22)
+scale = Vector2(1.65, 1.8)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

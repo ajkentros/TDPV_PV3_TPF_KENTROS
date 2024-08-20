@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://wckyo1g1rr0l"]
+
+[ext_resource type="Script" path="res://Ignorancia/ignorancia.gd" id="1_6fdlk"]
+[ext_resource type="Texture2D" uid="uid://c47luetxt177b" path="res://Ignorancia/Ignorancia_camina_1.png" id="1_csn0b"]
+[ext_resource type="Texture2D" uid="uid://cnivndfxty2o6" path="res://Ignorancia/Ignorancia_camina_2.png" id="2_vwobr"]
+[ext_resource type="Texture2D" uid="uid://du7kq6y50idxh" path="res://Ignorancia/Ignorancia_nada_1.png" id="3_623x2"]
+[ext_resource type="Texture2D" uid="uid://deg33adry4ei0" path="res://Ignorancia/Ignorancia_nada_2.png" id="4_gctl6"]
+[ext_resource type="Texture2D" uid="uid://ckxqwnpcwmc3c" path="res://Ignorancia/Ignorancia_vuela_1.png" id="5_6nrx2"]
+[ext_resource type="Texture2D" uid="uid://dnukkkxloqrlo" path="res://Ignorancia/Ignorancia_vuela_2.png" id="6_sr1yf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4gl0h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_csn0b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vwobr")
+}],
+"loop": true,
+"name": &"ignorancia_camina",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_623x2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gctl6")
+}],
+"loop": true,
+"name": &"ignorancia_nada",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_6nrx2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_sr1yf")
+}],
+"loop": true,
+"name": &"ignorancia_vuela",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pf0pk"]
+radius = 12.0
+height = 34.0
+
+[node name="Ignorancia" type="RigidBody2D" groups=["Ignorancia"]]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_6fdlk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_4gl0h")
+animation = &"ignorancia_vuela"
+frame = 1
+frame_progress = 0.345773
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_pf0pk")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

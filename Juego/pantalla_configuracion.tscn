@@ -1,0 +1,147 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkjsmr7yt4d7t"]
+
+[ext_resource type="Script" path="res://Juego/pantalla_configuracion.gd" id="1_4x1r6"]
+[ext_resource type="FontFile" uid="uid://jy3qjpugf4jw" path="res://Fonts/Xolonium-Regular.ttf" id="2_lfixb"]
+[ext_resource type="Texture2D" uid="uid://b86ay5v0rxnej" path="res://Arte/Texturas/galaxia_4.png" id="2_qqx24"]
+[ext_resource type="Texture2D" uid="uid://c2rvfd0xbnk5l" path="res://Arte/Texturas/Boton_Sonidos.png" id="3_o6mju"]
+[ext_resource type="Texture2D" uid="uid://n3ixwsbmyjwo" path="res://Arte/Texturas/Boton_Musica.png" id="4_8fgdd"]
+[ext_resource type="Texture2D" uid="uid://cldrf30ertnx6" path="res://Arte/Texturas/BotonVolver.png" id="5_7cqvo"]
+[ext_resource type="Texture2D" uid="uid://bcn02xr0c2s43" path="res://Arte/Texturas/Boton_Sonidos_Mute.png" id="5_ovjh4"]
+
+[node name="PantallaConfiguracion" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4x1r6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(642.5, 357.5)
+scale = Vector2(2.4176, 1.35824)
+texture = ExtResource("2_qqx24")
+
+[node name="ColorRect" type="ColorRect" parent="Sprite2D"]
+offset_left = -266.0
+offset_top = -261.0
+offset_right = 267.0
+offset_bottom = 261.0
+color = Color(0, 0, 0, 0.843137)
+
+[node name="Sonidos" type="Button" parent="."]
+layout_mode = 1
+offset_left = 600.0
+offset_top = 176.0
+offset_right = 696.0
+offset_bottom = 275.0
+focus_mode = 1
+theme_override_colors/font_color = Color(1, 0.752941, 0, 1)
+theme_override_fonts/font = ExtResource("2_lfixb")
+theme_override_font_sizes/font_size = 46
+icon = ExtResource("3_o6mju")
+icon_alignment = 1
+
+[node name="TextoNivel2" type="Label" parent="Sonidos"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -41.5
+offset_right = -88.0
+offset_bottom = 42.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_lfixb")
+theme_override_font_sizes/font_size = 60
+text = "sonidos"
+vertical_alignment = 1
+
+[node name="HSliderSonidos" type="HSlider" parent="Sonidos"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = -8.0
+offset_right = 296.0
+offset_bottom = 42.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="SonidosMute" type="Button" parent="Sonidos"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 48.0
+offset_right = 225.0
+offset_bottom = 147.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("5_ovjh4")
+
+[node name="Musica" type="Button" parent="."]
+layout_mode = 1
+offset_left = 600.0
+offset_top = 320.0
+offset_right = 704.0
+offset_bottom = 425.0
+theme_override_colors/font_color = Color(1, 0.752941, 0, 1)
+theme_override_fonts/font = ExtResource("2_lfixb")
+theme_override_font_sizes/font_size = 46
+icon = ExtResource("4_8fgdd")
+icon_alignment = 1
+
+[node name="TextoNivel" type="Label" parent="Musica"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -44.5
+offset_right = -96.0
+offset_bottom = 43.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_lfixb")
+theme_override_font_sizes/font_size = 60
+text = "música"
+vertical_alignment = 1
+
+[node name="HSliderMusica" type="HSlider" parent="Musica"]
+layout_mode = 0
+offset_left = 128.0
+offset_right = 296.0
+offset_bottom = 50.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MusicaMute" type="Button" parent="Musica"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 50.0
+offset_right = 225.0
+offset_bottom = 149.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("5_ovjh4")
+
+[node name="Volver" type="Button" parent="."]
+texture_filter = 3
+layout_mode = 1
+offset_left = 1120.0
+offset_top = 576.0
+offset_right = 1215.0
+offset_bottom = 673.0
+theme_type_variation = &"FlatButton"
+theme_override_fonts/font = ExtResource("2_lfixb")
+theme_override_font_sizes/font_size = 46
+icon = ExtResource("5_7cqvo")
+icon_alignment = 1
+
+[connection signal="pressed" from="Sonidos" to="." method="_on_sonidos_pressed"]
+[connection signal="value_changed" from="Sonidos/HSliderSonidos" to="." method="_on_h_slider_sonidos_value_changed"]
+[connection signal="pressed" from="Sonidos/SonidosMute" to="." method="_on_sonidos_mute_pressed"]
+[connection signal="pressed" from="Musica" to="." method="_on_musica_pressed"]
+[connection signal="value_changed" from="Musica/HSliderMusica" to="." method="_on_h_slider_musica_value_changed"]
+[connection signal="pressed" from="Musica/MusicaMute" to="." method="_on_musica_mute_pressed"]
+[connection signal="pressed" from="Volver" to="." method="_on_volver_pressed"]

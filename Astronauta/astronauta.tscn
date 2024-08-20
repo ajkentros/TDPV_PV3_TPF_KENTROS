@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://bcsf5h08m5ahk"]
+
+[ext_resource type="Texture2D" uid="uid://0x8rlpho0v3t" path="res://Astronauta/Texturas/Astronauta_camina_1.png" id="1_chpqu"]
+[ext_resource type="Script" path="res://Astronauta/astronauta.gd" id="1_iog5d"]
+[ext_resource type="Texture2D" uid="uid://feacynvxelvu" path="res://Astronauta/Texturas/Astronauta_arriba_1.png" id="2_7kpmv"]
+[ext_resource type="Shader" path="res://Astronauta/Texturas/contorno_astronauta.gdshader" id="2_8m6t2"]
+[ext_resource type="Texture2D" uid="uid://dkejcmp7ye3cx" path="res://Astronauta/Texturas/Astronauta_camina_2.png" id="2_hjfsv"]
+[ext_resource type="Texture2D" uid="uid://babr02b3nbmwm" path="res://Astronauta/Texturas/Astronauta_arriba_2.png" id="3_watrn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dr5st"]
+shader = ExtResource("2_8m6t2")
+shader_parameter/original_color = Color(0.756863, 0.0901961, 0.835294, 1)
+shader_parameter/new_color = Color(0.93654, 0.547112, 0.43332, 1)
+shader_parameter/tolerancia = 0.093
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g6o2u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7kpmv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_watrn")
+}],
+"loop": true,
+"name": &"astronauta_arriba",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_chpqu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hjfsv")
+}],
+"loop": true,
+"name": &"astronauta_camina",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_chpqu")
+}],
+"loop": true,
+"name": &"astronauta_reposo",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ejivl"]
+radius = 28.0
+height = 70.0
+
+[node name="Astronauta" type="Area2D"]
+script = ExtResource("1_iog5d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_dr5st")
+use_parent_material = true
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_g6o2u")
+animation = &"astronauta_reposo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ejivl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,155 @@
+[gd_scene load_steps=10 format=3 uid="uid://tm64f0kk636"]
+
+[ext_resource type="Script" path="res://Juego/pantalla_resumen.gd" id="1_ldt2a"]
+[ext_resource type="FontFile" uid="uid://jy3qjpugf4jw" path="res://Fonts/Xolonium-Regular.ttf" id="1_xk6fj"]
+[ext_resource type="Texture2D" uid="uid://d52a2uoe8f4u" path="res://Arte/Texturas/Suma.png" id="2_8ynte"]
+[ext_resource type="Texture2D" uid="uid://cldrf30ertnx6" path="res://Arte/Texturas/BotonVolver.png" id="3_a5uk1"]
+[ext_resource type="Texture2D" uid="uid://bw8rnpfu3mn1q" path="res://Arte/Texturas/Resta.png" id="3_xv5tb"]
+[ext_resource type="Texture2D" uid="uid://3qnj0qwqnya6" path="res://Arte/Texturas/Multiplicacion.png" id="4_h18g7"]
+[ext_resource type="Texture2D" uid="uid://du3y1pp5ky44m" path="res://Arte/Texturas/Boton_Play.png" id="4_nxkqe"]
+[ext_resource type="Texture2D" uid="uid://di67qdd3g53w8" path="res://Arte/Texturas/Division.png" id="5_b27xt"]
+[ext_resource type="Texture2D" uid="uid://31twrjvvng63" path="res://Arte/Texturas/galaxia_2.png" id="6_s5nas"]
+
+[node name="PantallaResumen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ldt2a")
+suma = ExtResource("2_8ynte")
+resta = ExtResource("3_xv5tb")
+multiplicacion = ExtResource("4_h18g7")
+division = ExtResource("5_b27xt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(642.5, 357.5)
+scale = Vector2(2.4176, 1.35824)
+texture = ExtResource("6_s5nas")
+
+[node name="ColorRect" type="ColorRect" parent="Sprite2D"]
+offset_left = -266.0
+offset_top = -261.0
+offset_right = 267.0
+offset_bottom = 261.0
+color = Color(0.768627, 0.780392, 0.635294, 0)
+
+[node name="TextoNivel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 128.0
+offset_top = -216.0
+offset_right = -450.0
+offset_bottom = -124.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_xk6fj")
+theme_override_font_sizes/font_size = 60
+text = "Nivel jugado:"
+
+[node name="SpriteNivel" type="Sprite2D" parent="."]
+position = Vector2(576, 184)
+texture = ExtResource("2_8ynte")
+
+[node name="LabelNivel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 544.0
+offset_top = -216.0
+offset_right = -531.0
+offset_bottom = -124.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_xk6fj")
+theme_override_font_sizes/font_size = 60
+
+[node name="TextoConocimiento" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 128.0
+offset_top = -40.0
+offset_right = -344.0
+offset_bottom = 51.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_xk6fj")
+theme_override_font_sizes/font_size = 60
+text = "Conocimiento acumulado:"
+
+[node name="LabelConocimiento" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 960.0
+offset_top = -32.0
+offset_right = -192.0
+offset_bottom = 59.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_xk6fj")
+theme_override_font_sizes/font_size = 60
+
+[node name="TextoTiempo" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 128.0
+offset_top = 64.0
+offset_right = -624.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_xk6fj")
+theme_override_font_sizes/font_size = 60
+text = "Tiempo Jugado:"
+
+[node name="LabelTiempo" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 656.0
+offset_top = 72.0
+offset_right = 975.0
+offset_bottom = 145.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_xk6fj")
+theme_override_font_sizes/font_size = 60
+
+[node name="Volver" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 608.0
+offset_right = 1216.0
+offset_bottom = 705.0
+theme_override_fonts/font = ExtResource("1_xk6fj")
+theme_override_font_sizes/font_size = 46
+icon = ExtResource("3_a5uk1")
+
+[node name="SiguienteNivel" type="Button" parent="."]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 608.0
+offset_right = 512.0
+offset_bottom = 707.0
+theme_override_colors/font_color = Color(1, 0.752941, 0, 1)
+theme_override_fonts/font = ExtResource("1_xk6fj")
+theme_override_font_sizes/font_size = 46
+icon = ExtResource("4_nxkqe")
+
+[connection signal="pressed" from="Volver" to="." method="_on_volver_pressed"]
+[connection signal="pressed" from="SiguienteNivel" to="." method="_on_siguiente_nivel_pressed"]

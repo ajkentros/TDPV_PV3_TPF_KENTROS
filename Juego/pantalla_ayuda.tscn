@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dypaplfbjifdk"]
+
+[ext_resource type="Script" path="res://Juego/pantalla_ayuda.gd" id="1_6vid8"]
+[ext_resource type="Texture2D" uid="uid://cnsx32lo2s641" path="res://Arte/Texturas/pantalla_ayuda.png" id="2_w53l2"]
+[ext_resource type="FontFile" uid="uid://jy3qjpugf4jw" path="res://Fonts/Xolonium-Regular.ttf" id="3_vfa1f"]
+[ext_resource type="Texture2D" uid="uid://cldrf30ertnx6" path="res://Arte/Texturas/BotonVolver.png" id="4_ofda7"]
+
+[node name="PantallaAyuda" type="Node2D"]
+script = ExtResource("1_6vid8")
+
+[node name="PantallaAyuda" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("2_w53l2")
+
+[node name="Volver" type="Button" parent="."]
+offset_left = 1080.0
+offset_top = 608.0
+offset_right = 1176.0
+offset_bottom = 705.0
+theme_override_fonts/font = ExtResource("3_vfa1f")
+theme_override_font_sizes/font_size = 46
+icon = ExtResource("4_ofda7")
+
+[connection signal="pressed" from="Volver" to="." method="_on_volver_pressed"]

@@ -1,0 +1,126 @@
+[gd_scene load_steps=8 format=3 uid="uid://b6xcpg62jb8ik"]
+
+[ext_resource type="FontFile" uid="uid://jy3qjpugf4jw" path="res://Fonts/Xolonium-Regular.ttf" id="1_u7kx0"]
+[ext_resource type="Script" path="res://Juego/pantalla_inicio.gd" id="1_uqut0"]
+[ext_resource type="Texture2D" uid="uid://c7dbmj0fipjj6" path="res://Arte/Texturas/galaxia_1.png" id="2_rddcl"]
+[ext_resource type="Texture2D" uid="uid://cnwcjg4c3ckch" path="res://Arte/Texturas/BotonGalaxia.png" id="3_ep4no"]
+[ext_resource type="Texture2D" uid="uid://v5s4nei71w2t" path="res://Arte/Texturas/BotonConfiguracion.png" id="4_000rj"]
+[ext_resource type="Texture2D" uid="uid://7ffx0sgjecew" path="res://Arte/Texturas/BotonCreditos.png" id="5_p5f4v"]
+[ext_resource type="Texture2D" uid="uid://dr7qs078yjon7" path="res://Arte/Texturas/BotonAyuda.png" id="6_1oxm2"]
+
+[node name="PantallaInicio" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uqut0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(642.5, 357.5)
+scale = Vector2(2.4176, 1.35824)
+texture = ExtResource("2_rddcl")
+
+[node name="ColorRect" type="ColorRect" parent="Sprite2D"]
+offset_left = -266.0
+offset_top = -261.0
+offset_right = 267.0
+offset_bottom = 261.0
+color = Color(0.768627, 0.780392, 0.635294, 0)
+
+[node name="IniciarGalaxia" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 216.0
+offset_right = 356.0
+offset_bottom = 376.0
+grow_horizontal = 2
+scale = Vector2(0.64, 0.64)
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_u7kx0")
+theme_override_font_sizes/font_size = 46
+icon = ExtResource("3_ep4no")
+
+[node name="Configuracion" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -272.0
+offset_right = -139.0
+offset_bottom = -169.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("1_u7kx0")
+theme_override_font_sizes/font_size = 46
+action_mode = 0
+text = "Configuración"
+icon = ExtResource("4_000rj")
+text_overrun_behavior = 2
+autowrap_mode = 2
+
+[node name="Ayuda" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 208.0
+offset_top = 88.0
+offset_right = 309.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 0.752941, 0, 1)
+theme_override_fonts/font = ExtResource("1_u7kx0")
+theme_override_font_sizes/font_size = 46
+icon = ExtResource("6_1oxm2")
+
+[node name="Creditos" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = 88.0
+offset_right = 77.0
+offset_bottom = 191.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 0.752941, 0, 1)
+theme_override_fonts/font = ExtResource("1_u7kx0")
+theme_override_font_sizes/font_size = 46
+icon = ExtResource("5_p5f4v")
+
+[node name="Salir" type="Button" parent="."]
+layout_mode = 2
+offset_left = 1144.0
+offset_top = 592.0
+offset_right = 1264.0
+offset_bottom = 688.0
+theme_override_colors/font_color = Color(1, 0.752941, 0, 1)
+theme_override_fonts/font = ExtResource("1_u7kx0")
+theme_override_font_sizes/font_size = 46
+text = "Salir"
+
+[connection signal="pressed" from="IniciarGalaxia" to="." method="_on_iniciar_galaxia_pressed"]
+[connection signal="pressed" from="Configuracion" to="." method="_on_configuracion_pressed"]
+[connection signal="pressed" from="Ayuda" to="." method="_on_ayuda_pressed"]
+[connection signal="pressed" from="Creditos" to="." method="_on_creditos_pressed"]
+[connection signal="pressed" from="Salir" to="." method="_on_salir_pressed"]
