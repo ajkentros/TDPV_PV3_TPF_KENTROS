@@ -249,18 +249,6 @@ func despues_de_colision(mensaje, color: Color):
 	# Iniciar el TimerEsperaEcuacion para esperar 2 segundos
 	$TimerEsperaEcuacion.start(2)
 
-#func mostrar_resumen():
-	#if is_inside_tree():
-		#var pantalla_resumen = load("res://Juego/pantalla_resumen.tscn").instantiate()
-		#if pantalla_resumen != null:
-			#pantalla_resumen.muestra_resumen(conocimiento, timer_juego)
-			#get_tree().root.add_child(pantalla_resumen)  # Añadir la escena de resumen al árbol de nodos.
-			## Liberar la escena actual
-			#queue_free()
-		#else:
-			#print("Error: La escena 'pantalla_resumen.tscn' no se pudo cargar.")
-	#else:
-		#print("Error: El nodo principal no está disponible.")
 
 func verifica_juego():
 	if espera_nueva_ecuacion:
