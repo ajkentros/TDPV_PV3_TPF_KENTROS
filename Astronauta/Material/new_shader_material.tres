@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://da5ou552osdyf"]
+
+[ext_resource type="Shader" path="res://Astronauta/Texturas/contorno_astronauta.gdshader" id="1_1v6os"]
+
+[resource]
+shader = ExtResource("1_1v6os")
+shader_parameter/original_color = Color(0.756863, 0.0901961, 0.835294, 1)
+shader_parameter/new_color = Color(0.105654, 0.36966, 0.728519, 1)
+shader_parameter/tolerancia = 0.1

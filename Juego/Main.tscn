@@ -1,16 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3ef34ahekjeb"]
+[gd_scene load_steps=10 format=3 uid="uid://c3ef34ahekjeb"]
 
 [ext_resource type="PackedScene" uid="uid://bcsf5h08m5ahk" path="res://Astronauta/astronauta.tscn" id="1_l35g8"]
 [ext_resource type="Script" path="res://Juego/main.gd" id="1_ymqid"]
 [ext_resource type="PackedScene" uid="uid://wckyo1g1rr0l" path="res://Ignorancia/Ignorancia.tscn" id="2_v3pkp"]
 [ext_resource type="PackedScene" uid="uid://dhgulm4nlmp8h" path="res://Numero/numero.tscn" id="3_n0f0n"]
 [ext_resource type="Texture2D" uid="uid://cmr06vl763fjb" path="res://Arte/Texturas/galaxia_6.png" id="4_3pcbq"]
-[ext_resource type="PackedScene" uid="uid://rjvt7xihgjvo" path="res://Juego/HUD.tscn" id="4_x8day"]
+[ext_resource type="PackedScene" uid="uid://b2aalbsbwd4hs" path="res://Juego/HUDSuma.tscn" id="4_24een"]
+[ext_resource type="PackedScene" uid="uid://b624lwqw81inj" path="res://Juego/HUDResta.tscn" id="5_nh4yb"]
+[ext_resource type="PackedScene" uid="uid://bivtb8twvme01" path="res://Juego/HUDMultiplicacion.tscn" id="6_6d474"]
+[ext_resource type="PackedScene" uid="uid://dc2vpyho4bttu" path="res://Juego/HUDDivision.tscn" id="7_608s5"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_ymqid")
 ignorancia_escena = ExtResource("2_v3pkp")
 numero_escena = ExtResource("3_n0f0n")
+hud_suma_escena = ExtResource("4_24een")
+hud_resta_escena = ExtResource("5_nh4yb")
+hud_multiplicacion_escena = ExtResource("6_6d474")
+hud_division_escena = ExtResource("7_608s5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(640.5, 360)
@@ -39,8 +46,6 @@ one_shot = true
 
 [node name="PosicionInicialAstronauta" type="Marker2D" parent="."]
 position = Vector2(64, 128)
-
-[node name="HUD" parent="." instance=ExtResource("4_x8day")]
 
 [connection signal="colisiono_con_ignorancia" from="Astronauta" to="." method="_on_astronauta_colisiono_con_ignorancia"]
 [connection signal="hit" from="Astronauta" to="." method="_on_astronauta_hit"]

@@ -1,66 +1,282 @@
-[gd_scene load_steps=10 format=3 uid="uid://bcsf5h08m5ahk"]
+[gd_scene load_steps=40 format=3 uid="uid://bcsf5h08m5ahk"]
 
 [ext_resource type="Texture2D" uid="uid://0x8rlpho0v3t" path="res://Astronauta/Texturas/Astronauta_camina_1.png" id="1_chpqu"]
 [ext_resource type="Script" path="res://Astronauta/astronauta.gd" id="1_iog5d"]
+[ext_resource type="Texture2D" uid="uid://ber4eoiu8fx52" path="res://Astronauta/Texturas/Astronauta_reposa_derecha_3.png" id="2_2xww1"]
 [ext_resource type="Texture2D" uid="uid://feacynvxelvu" path="res://Astronauta/Texturas/Astronauta_arriba_1.png" id="2_7kpmv"]
-[ext_resource type="Shader" path="res://Astronauta/Texturas/contorno_astronauta.gdshader" id="2_8m6t2"]
 [ext_resource type="Texture2D" uid="uid://dkejcmp7ye3cx" path="res://Astronauta/Texturas/Astronauta_camina_2.png" id="2_hjfsv"]
+[ext_resource type="Texture2D" uid="uid://c6dbadg3f7ohn" path="res://Astronauta/Texturas/Astronauta_reposa_izquierda_2.png" id="2_jvv8y"]
 [ext_resource type="Texture2D" uid="uid://babr02b3nbmwm" path="res://Astronauta/Texturas/Astronauta_arriba_2.png" id="3_watrn"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dr5st"]
-shader = ExtResource("2_8m6t2")
-shader_parameter/original_color = Color(0.756863, 0.0901961, 0.835294, 1)
-shader_parameter/new_color = Color(0.93654, 0.547112, 0.43332, 1)
-shader_parameter/tolerancia = 0.093
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_g6o2u"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_7kpmv")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_watrn")
-}],
-"loop": true,
-"name": &"astronauta_arriba",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_chpqu")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_hjfsv")
-}],
-"loop": true,
-"name": &"astronauta_camina",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_chpqu")
-}],
-"loop": true,
-"name": &"astronauta_reposo",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://hi7mfrrsei0s" path="res://Astronauta/Texturas/Astronauta_reposa_derecha_2.png" id="4_d3lof"]
+[ext_resource type="Texture2D" uid="uid://culuidp2vqum" path="res://Astronauta/Texturas/Astronauta_reposa_derecha.png" id="7_fwk8l"]
+[ext_resource type="Texture2D" uid="uid://cjqxrlry4kckh" path="res://Astronauta/Texturas/Astronauta_reposa_izquierda.png" id="8_4nnwc"]
+[ext_resource type="Texture2D" uid="uid://dypdvqw65tfkr" path="res://Astronauta/Texturas/Astronauta_camina_1_2.png" id="10_qsk51"]
+[ext_resource type="Texture2D" uid="uid://btt5ph8yc6hgq" path="res://Astronauta/Texturas/Astronauta_camina_2_2.png" id="11_kxmq1"]
+[ext_resource type="Texture2D" uid="uid://uci6mf524bvw" path="res://Astronauta/Texturas/Astronauta_arriba_1_2.png" id="12_5if07"]
+[ext_resource type="Texture2D" uid="uid://dvtdp41r8ahft" path="res://Astronauta/Texturas/Astronauta_arriba_2_2.png" id="13_niaw3"]
+[ext_resource type="Texture2D" uid="uid://bgpcnvis6u6ht" path="res://Astronauta/Texturas/Astronauta_arriba_1_3.png" id="15_ylqhm"]
+[ext_resource type="Texture2D" uid="uid://c3okbjbj0qqfm" path="res://Astronauta/Texturas/Astronauta_arriba_2_3.png" id="16_yh3lq"]
+[ext_resource type="Texture2D" uid="uid://bklnu4t1wq4bs" path="res://Astronauta/Texturas/Astronauta_arriba_1_4.png" id="17_4l0ao"]
+[ext_resource type="Texture2D" uid="uid://cmh783q4tk2bs" path="res://Astronauta/Texturas/Astronauta_arriba_2_4.png" id="18_wiol7"]
+[ext_resource type="Texture2D" uid="uid://h0rkt5bh8eex" path="res://Astronauta/Texturas/Astronauta_camina_1_3.png" id="19_dqdai"]
+[ext_resource type="Texture2D" uid="uid://yy8cshdmqkhh" path="res://Astronauta/Texturas/Astronauta_camina_2_3.png" id="20_7cbm0"]
+[ext_resource type="Texture2D" uid="uid://bytvujl5lh283" path="res://Astronauta/Texturas/Astronauta_camina_1_4.png" id="21_4ce3c"]
+[ext_resource type="Texture2D" uid="uid://cyu6b8o058ld8" path="res://Astronauta/Texturas/Astronauta_camina_2_4.png" id="22_ee5uu"]
+[ext_resource type="Texture2D" uid="uid://d2ib4sps4j6dk" path="res://Astronauta/Texturas/Astronauta_reposa_izquierda_3.png" id="23_036pi"]
+[ext_resource type="Texture2D" uid="uid://bsf0wk4sk8xio" path="res://Astronauta/Texturas/Astronauta_reposa_derecha_4.png" id="24_1batm"]
+[ext_resource type="Texture2D" uid="uid://caqgl7b5m048t" path="res://Astronauta/Texturas/Astronauta_reposa_izquierda_4.png" id="25_iubc1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ejivl"]
 radius = 28.0
 height = 70.0
 
+[sub_resource type="Animation" id="Animation_rwjum"]
+resource_name = "astronauta_arriba"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("astronauta:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_7kpmv"), ExtResource("3_watrn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("astronauta:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_xbpmt"]
+resource_name = "astronauta_arriba_2"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("astronauta:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("12_5if07"), ExtResource("13_niaw3")]
+}
+
+[sub_resource type="Animation" id="Animation_p6bc8"]
+resource_name = "astronauta_arriba_3"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("astronauta:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("15_ylqhm"), ExtResource("16_yh3lq")]
+}
+
+[sub_resource type="Animation" id="Animation_yep7t"]
+resource_name = "astronauta_arriba_4"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("astronauta:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("17_4l0ao"), ExtResource("18_wiol7")]
+}
+
+[sub_resource type="Animation" id="Animation_n05vk"]
+resource_name = "astronauta_camina"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("astronauta:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("1_chpqu"), ExtResource("2_hjfsv")]
+}
+
+[sub_resource type="Animation" id="Animation_7egby"]
+resource_name = "astronauta_camina_2"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("astronauta:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("10_qsk51"), ExtResource("11_kxmq1")]
+}
+
+[sub_resource type="Animation" id="Animation_s2q60"]
+resource_name = "astronauta_camina_3"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("astronauta:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("19_dqdai"), ExtResource("20_7cbm0")]
+}
+
+[sub_resource type="Animation" id="Animation_hi267"]
+resource_name = "astronauta_camina_4"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("astronauta:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("21_4ce3c"), ExtResource("22_ee5uu")]
+}
+
+[sub_resource type="Animation" id="Animation_krd1w"]
+resource_name = "astronauta_reposa"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("astronauta:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("7_fwk8l"), ExtResource("8_4nnwc")]
+}
+
+[sub_resource type="Animation" id="Animation_w56o1"]
+resource_name = "astronauta_reposa_2"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("astronauta:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_d3lof"), ExtResource("2_jvv8y")]
+}
+
+[sub_resource type="Animation" id="Animation_xb3ll"]
+resource_name = "astronauta_reposa_3"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("astronauta:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_2xww1"), ExtResource("23_036pi")]
+}
+
+[sub_resource type="Animation" id="Animation_js3th"]
+resource_name = "astronauta_reposa_4"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("astronauta:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("24_1batm"), ExtResource("25_iubc1")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dtp0d"]
+_data = {
+"astronauta_arriba": SubResource("Animation_rwjum"),
+"astronauta_arriba_2": SubResource("Animation_xbpmt"),
+"astronauta_arriba_3": SubResource("Animation_p6bc8"),
+"astronauta_arriba_4": SubResource("Animation_yep7t"),
+"astronauta_camina": SubResource("Animation_n05vk"),
+"astronauta_camina_2": SubResource("Animation_7egby"),
+"astronauta_camina_3": SubResource("Animation_s2q60"),
+"astronauta_camina_4": SubResource("Animation_hi267"),
+"astronauta_reposa": SubResource("Animation_krd1w"),
+"astronauta_reposa_2": SubResource("Animation_w56o1"),
+"astronauta_reposa_3": SubResource("Animation_xb3ll"),
+"astronauta_reposa_4": SubResource("Animation_js3th")
+}
+
 [node name="Astronauta" type="Area2D"]
 script = ExtResource("1_iog5d")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_dr5st")
-use_parent_material = true
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_g6o2u")
-animation = &"astronauta_reposo"
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_ejivl")
+
+[node name="astronauta" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_7kpmv")
+
+[node name="AnimationAstronauta" type="AnimationPlayer" parent="astronauta"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_dtp0d")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

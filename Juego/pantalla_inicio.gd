@@ -1,6 +1,9 @@
 extends Control
 
+
 func _on_iniciar_galaxia_pressed() -> void:
+
+	
 	GameManager.resetea_inicio()
 	var pantalla_main = load("res://Juego/Main.tscn").instantiate()	
 	get_tree().root.add_child(pantalla_main)

@@ -1,0 +1,146 @@
+[gd_scene load_steps=9 format=3 uid="uid://b2aalbsbwd4hs"]
+
+[ext_resource type="Script" path="res://Juego/hud.gd" id="1_xlqdw"]
+[ext_resource type="Texture2D" uid="uid://baypf7jxnqcpm" path="res://Arte/Texturas/Boton_Pausa.png" id="2_iiu14"]
+[ext_resource type="Texture2D" uid="uid://du3y1pp5ky44m" path="res://Arte/Texturas/Boton_Play.png" id="3_j62nw"]
+[ext_resource type="Texture2D" uid="uid://cmr06vl763fjb" path="res://Arte/Texturas/galaxia_6.png" id="4_3osrf"]
+[ext_resource type="Texture2D" uid="uid://d52a2uoe8f4u" path="res://Arte/Texturas/Suma.png" id="4_cxxw0"]
+[ext_resource type="FontFile" uid="uid://jy3qjpugf4jw" path="res://Fonts/Xolonium-Regular.ttf" id="8_tcpti"]
+[ext_resource type="Texture2D" uid="uid://d18viee2e6gp0" path="res://Arte/Texturas/conocimiento.png" id="9_53iew"]
+[ext_resource type="Texture2D" uid="uid://bm8cd3agjk76" path="res://Arte/Texturas/vida_estelar.png" id="10_in73q"]
+
+[node name="HUDSumas" type="CanvasLayer"]
+script = ExtResource("1_xlqdw")
+boton_pausa = ExtResource("2_iiu14")
+boton_play = ExtResource("3_j62nw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(2.50195, 1.40625)
+texture = ExtResource("4_3osrf")
+
+[node name="ColorRect" type="ColorRect" parent="Sprite2D"]
+offset_left = -255.8
+offset_top = -256.0
+offset_right = 256.2
+offset_bottom = 256.0
+color = Color(0.76701, 0.782066, 0.636377, 0.247059)
+
+[node name="TextoNivel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.0
+offset_top = -352.0
+offset_right = 9.0
+offset_bottom = -312.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("8_tcpti")
+theme_override_font_sizes/font_size = 33
+text = "Nivel "
+horizontal_alignment = 1
+
+[node name="SpriteNivel" type="Sprite2D" parent="."]
+position = Vector2(662, 29)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_cxxw0")
+
+[node name="SpriteConocimiento" type="Sprite2D" parent="."]
+position = Vector2(54.25, 72)
+scale = Vector2(0.0462579, 0.0616343)
+texture = ExtResource("9_53iew")
+
+[node name="LabelConocimiento" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -560.0
+offset_top = -320.0
+offset_right = -502.0
+offset_bottom = -262.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.923309, 0.570694, 0.0517258, 1)
+theme_override_fonts/font = ExtResource("8_tcpti")
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 368.0
+offset_top = 50.0
+offset_right = 792.0
+offset_bottom = 128.0
+color = Color(0.658824, 0.517647, 0.0784314, 0.847059)
+
+[node name="LabelEcuacion" type="Label" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 376.0
+offset_top = -310.0
+offset_right = 832.0
+offset_bottom = -231.0
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("8_tcpti")
+theme_override_font_sizes/font_size = 64
+text = "2 + 3 = 5"
+autowrap_mode = 2
+
+[node name="LabelDevolucion" type="Label" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 920.0
+offset_top = -296.0
+offset_right = -96.0
+offset_bottom = -234.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("8_tcpti")
+theme_override_font_sizes/font_size = 38
+autowrap_mode = 2
+
+[node name="ButtonPausa" type="Button" parent="."]
+offset_left = 1224.0
+offset_top = 8.0
+offset_right = 1321.0
+offset_bottom = 107.0
+scale = Vector2(0.489985, 0.416665)
+icon = ExtResource("2_iiu14")
+
+[node name="TimerMensaje" type="Timer" parent="."]
+one_shot = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 40.0
+offset_top = 98.0
+offset_right = 40.0
+offset_bottom = 98.0
+size_flags_horizontal = 3
+
+[node name="SpriteVidaEstelar" type="Sprite2D" parent="HBoxContainer"]
+position = Vector2(8, 22)
+scale = Vector2(0.4, 0.425)
+texture = ExtResource("10_in73q")
+
+[node name="SpriteVidaEstelar2" type="Sprite2D" parent="HBoxContainer"]
+position = Vector2(48, 22)
+scale = Vector2(0.4, 0.425)
+texture = ExtResource("10_in73q")
+
+[node name="SpriteVidaEstelar3" type="Sprite2D" parent="HBoxContainer"]
+position = Vector2(88, 22)
+scale = Vector2(0.4, 0.425)
+texture = ExtResource("10_in73q")
+
+[connection signal="pressed" from="ButtonPausa" to="." method="_on_button_pausa_pressed"]
+[connection signal="timeout" from="TimerMensaje" to="." method="_on_timer_mensaje_timeout"]

@@ -23,23 +23,22 @@ var movimiento_mouse = false  	# Variable para controlar el modo de movimiento
 var error_movimiento = 10.0  	# distancia mínima de movimiento para evitar vibraciones
 var permitir_movimiento_mouse = false  # Bandera para permitir el movimiento del mouse
 
+var mouse_suavizado = 0.1  # Valor de suavizado, ajusta según lo necesites
+
+var nivel: int  # Variable para el nivel actual
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var nivel = GameManager.nivel
+	nivel = GameManager.nivel
 	#
 	area_posicion_inicial()
-	
-	# Obtiene el tamaño del sprite de la primera animación
-	var sprite_frames = $AnimatedSprite2D.get_sprite_frames()
-	var frame_texture = sprite_frames.get_frame_texture("astronauta_camina", 0)
-	sprite_size = frame_texture.get_size() * 0.5
 	
 	# Esconde el canvas
 	hide()		
 	# Posiciona al astronauta en una posición inical
 	start()
 	
-	cambiar_color_segun_nivel(nivel)
+	#cambiar_color_segun_nivel(nivel)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -64,61 +63,81 @@ func _process(delta):
 		velocity.y -= 1
 		movimiento_mouse = false
 		
-	# Movimiento con el mouse solo si se ha permitido
-	if permitir_movimiento_mouse and movimiento_mouse:
+	if velocity == Vector2.ZERO and permitir_movimiento_mouse and movimiento_mouse:
 		var direccion = (mouse_posicion - global_position).normalized()
-		var distance_al_mouse = global_position.distance_to(mouse_posicion)
-		# Aplica movimiento solo si la distancia al mouse es mayor que el umbral de error_movimiento
-		if distance_al_mouse > error_movimiento:
-			velocity = direccion * speed * min(distance_al_mouse / 100, 1)
+		var distancia_al_mouse = global_position.distance_to(mouse_posicion)
+	
+		if distancia_al_mouse > error_movimiento:
+			velocity = velocity.lerp(direccion * speed, mouse_suavizado) * min(distancia_al_mouse / 100, 1)
 		else:
-			velocity = Vector2.ZERO
-			movimiento_mouse = false
-		
-	# Aplica el movimiento solo si se ha detectado movimiento
+			movimiento_mouse = false  # Deja de moverse si está cerca del objetivo
+			
+	
+	# Aplica el movimiento si hay velocidad
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		if not $AnimatedSprite2D.is_playing():
-			$AnimatedSprite2D.play()
+		actualizar_animacion(velocity)
 	else:
-		if $AnimatedSprite2D.is_playing():
-			$AnimatedSprite2D.stop()
-		
-	# El vector position se incrementa con la velocidad por el tiempo delta	
-	position += velocity * delta
-	# El vector position = componente entre el vector zero y el tamaño de la pantalla (para no abandonar la pantalla)	
-	position = position.clamp(Vector2.ZERO, screen_size)
-	# Si la velocidad en x dstinta 0 =>
-	# 	la animation se establece en astronauta_camina
-	#	la inversión vertical de animación = false
-	#	la inversión horizontal de animación = si velocidad en x < 0
-	# Sino =>
-	#	la animation se establece en astronauta_arriba
-	#	la inversión vertical de animación = true
-	#	la inversión horizontal de animación = si velocidad en y > 0
-	if velocity.x != 0:
-		$AnimatedSprite2D.animation = "astronauta_camina"
-		$AnimatedSprite2D.flip_v = false
-		$AnimatedSprite2D.flip_h = velocity.x < 0
-	elif velocity.y != 0:
-		$AnimatedSprite2D.animation = "astronauta_arriba"
-		se_mueve_abajo = velocity.y < 0
-		$AnimatedSprite2D.flip_v = velocity.y > 0
-	else:
-		# Si la velocidad es cero, significa que el personaje se detuvo =>
-			# Vuelve a la posición original
-		if se_mueve_abajo && velocity.length() == 0:
-			$AnimatedSprite2D.flip_v = false  
-			$AnimatedSprite2D.flip_h = false 
-			$AnimatedSprite2D.animation = "astronauta_reposo"
-			se_mueve_abajo = false
-		
-	# Ajustar la posición del astronauta
-	var new_position = position + velocity * delta
-	new_position.x = clamp(new_position.x, sprite_size.x / 2, screen_size.x - sprite_size.x / 2)
-	new_position.y = clamp(new_position.y, sprite_size.y / 2, screen_size.y - sprite_size.y / 2)
-	position = new_position
+		detener_animacion()
 	
+	# Actualiza la posición
+	position += velocity * delta
+	position = position.clamp(Vector2.ZERO, screen_size)
+
+
+func actualizar_animacion(velocity: Vector2) -> void:
+	# Movimiento horizontal
+	if abs(velocity.x) > abs(velocity.y):
+		$astronauta.show()
+		match nivel:
+			1:
+				$astronauta/AnimationAstronauta.play("astronauta_camina")
+			2: 
+				$astronauta/AnimationAstronauta.play("astronauta_camina_2")
+			3:
+				$astronauta/AnimationAstronauta.play("astronauta_camina_3")
+			4:
+				$astronauta/AnimationAstronauta.play("astronauta_camina_4")
+		
+		$astronauta.flip_v = false  # Asegura que no esté volteado verticalmente
+		$astronauta.flip_h = velocity.x < 0  # Cambia flip_h del nodo correcto
+	# Movimiento vertical
+	elif abs(velocity.y) >= abs(velocity.x):
+		$astronauta.show()
+		match nivel:
+			1:
+				$astronauta/AnimationAstronauta.play("astronauta_arriba")
+			2: 
+				$astronauta/AnimationAstronauta.play("astronauta_arriba_2")
+			3:
+				$astronauta/AnimationAstronauta.play("astronauta_arriba_3")
+			4:
+				$astronauta/AnimationAstronauta.play("astronauta_arriba_4")
+		
+		
+		se_mueve_abajo = velocity.y > 0
+		$astronauta.flip_v = velocity.y > 0  # Cambiar flip_v del nodo correcto
+		
+	
+	else:
+		detener_animacion()
+
+func detener_animacion() -> void:
+	# Detener todas las animaciones y mostrar el estado de reposo
+	$astronauta.show()
+	match nivel:
+			1:
+				$astronauta/AnimationAstronauta.play("astronauta_reposa")
+			2: 
+				$astronauta/AnimationAstronauta.play("astronauta_reposa_2")
+			3:
+				$astronauta/AnimationAstronauta.play("astronauta_reposa_3")
+			4:
+				$astronauta/AnimationAstronauta.play("astronauta_reposa_4")
+	
+	$astronauta.flip_v = false  # Restablece el flip vertical para que no quede al revés
+	
+
 
 func _input(event):
 	# Activa movimiento si el mouse se mueve
@@ -171,25 +190,4 @@ func area_posicion_inicial():
 	area_min_y = 200
 	area_max_y = screen_size.y - area_min_y
 	
-func cambiar_color_segun_nivel(nivel: int) -> void:
-	# Carga el shader
-	var shader = preload("res://Astronauta/Texturas/contorno_astronauta.gdshader")
-	# Crea un ShaderMaterial y asignar el shader cargado
-	var shader_material = ShaderMaterial.new()
-	shader_material.shader = shader
-	# Asigna el ShaderMaterial al AnimatedSprite2D
-	$AnimatedSprite2D.material = shader_material
-	# Cambia el color del contorno según el nivel
-	match nivel:
-		1:
-			shader_material.set_shader_parameter("new_color",Color(0.0, 0.0, 0.0, 1.0))
-			#shader_material.set_shader_parameter("new_color",Color(1.0, 0.0, 0.0, 1.0))
-					
-			#shader_material.set("new_color", Color(0.757, 0.925, 0.835, 1.0))  # Blanco, color por defecto
-		2:
-			shader_material.set_shader_parameter("new_color", Color(1.0, 0.0, 0.0, 1.0))  # Rosa claro
-		3:
-			shader_material.set_shader_parameter("new_color", Color(0.5, 0.5, 1.0, 1.0))  # Azul claro
-		4:
-			shader_material.set_shader_parameter("new_color", Color(0.5, 1, 0.5, 1.0))  # Verde claro
-		
+	
