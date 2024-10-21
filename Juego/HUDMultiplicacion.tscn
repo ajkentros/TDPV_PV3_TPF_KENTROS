@@ -15,6 +15,7 @@ boton_pausa = ExtResource("2_owpab")
 boton_play = ExtResource("3_2jt7t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(642.01, 360)
 scale = Vector2(2.40453, 1.37931)
 texture = ExtResource("4_hqdik")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c3ef34ahekjeb"]
+[gd_scene load_steps=13 format=3 uid="uid://c3ef34ahekjeb"]
 
 [ext_resource type="PackedScene" uid="uid://bcsf5h08m5ahk" path="res://Astronauta/astronauta.tscn" id="1_l35g8"]
 [ext_resource type="Script" path="res://Juego/main.gd" id="1_ymqid"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://b624lwqw81inj" path="res://Juego/HUDResta.tscn" id="5_nh4yb"]
 [ext_resource type="PackedScene" uid="uid://bivtb8twvme01" path="res://Juego/HUDMultiplicacion.tscn" id="6_6d474"]
 [ext_resource type="PackedScene" uid="uid://dc2vpyho4bttu" path="res://Juego/HUDDivision.tscn" id="7_608s5"]
+[ext_resource type="Texture2D" uid="uid://c4ss4xde5x2th" path="res://Arte/Texturas/galaxia_3.png" id="8_ylqid"]
+[ext_resource type="Texture2D" uid="uid://b86ay5v0rxnej" path="res://Arte/Texturas/galaxia_4.png" id="9_82h8g"]
+[ext_resource type="Texture2D" uid="uid://jw07d10h8s43" path="res://Arte/Texturas/galaxia_5.png" id="10_qj7if"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_ymqid")
@@ -18,6 +21,10 @@ hud_suma_escena = ExtResource("4_24een")
 hud_resta_escena = ExtResource("5_nh4yb")
 hud_multiplicacion_escena = ExtResource("6_6d474")
 hud_division_escena = ExtResource("7_608s5")
+fondo_suma = ExtResource("8_ylqid")
+fondo_resta = ExtResource("9_82h8g")
+fondo_multiplicacion = ExtResource("10_qj7if")
+fondo_division = ExtResource("4_3pcbq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(640.5, 360)
@@ -32,6 +39,7 @@ offset_bottom = 256.0
 color = Color(0.76701, 0.782066, 0.636377, 0.247059)
 
 [node name="Astronauta" parent="." instance=ExtResource("1_l35g8")]
+position = Vector2(602, 375)
 
 [node name="TimerIgnorancia" type="Timer" parent="."]
 wait_time = 0.696

@@ -8,7 +8,13 @@ extends Node
 @export var hud_multiplicacion_escena: PackedScene
 @export var hud_division_escena: PackedScene
 
+@export var fondo_suma: Texture2D
+@export var fondo_resta: Texture2D
+@export var fondo_multiplicacion: Texture2D
+@export var fondo_division: Texture2D
+
 var hud_actual  # Almacena la referencia del HUD instanciado
+var sprite_fondo: Sprite2D
 
 var conocimiento: int
 var nivel: int  # Variable que indica el nivel actual
@@ -30,6 +36,8 @@ var area_max_y: int
 #var nivel_terminado:bool = false			# Variable bool que avisa si el juego terminó
 
 func _ready():
+	# Accede al Sprite2D que está en la jerarquía de Main
+	sprite_fondo = $Sprite2D
 	# Detiene la música de inicio
 	AudioManager.stop_musica_inicio()
 	# Inicializa el nivel desde el GameManager 
@@ -46,12 +54,16 @@ func carga_hud_para_nivel():
 	match nivel:
 		1:
 			hud_escena = hud_suma_escena.instantiate()
+			sprite_fondo.texture = fondo_suma
 		2:
 			hud_escena = hud_resta_escena.instantiate()
+			sprite_fondo.texture = fondo_resta
 		3:
 			hud_escena = hud_multiplicacion_escena.instantiate()
+			sprite_fondo.texture = fondo_multiplicacion
 		4:
 			hud_escena = hud_division_escena.instantiate()
+			sprite_fondo.texture = fondo_division
 	
 	# Añade HUD correspondiente a la escena
 	add_child(hud_escena)  
@@ -70,6 +82,9 @@ func nuevo_game():
 
 	timer_juego = 0.0
 	numeros_generados = 0
+	
+	# Comprobación de visibilidad al iniciar el juego
+	#print("Astronauta visible:", $Astronauta.visible)
 		
 	$Astronauta.start()
 	$TimerIgnorancia.start()
@@ -113,6 +128,7 @@ func adicionar_numero(valor: int) -> void:
 	var posicion_numero_x = randf_range(area_min_x, area_max_x)
 	var posicion_numero_y = randf_range(area_min_y, area_max_y)
 	numero.position = Vector2(posicion_numero_x, posicion_numero_y)
+	#print("Número generado en posición:", numero.position)
 # Define una dirección de movimiento aletoria de numero
 	var direction = randf_range(-PI / 4.0 , PI / 4.0)
 	numero.rotation = direction	
@@ -207,6 +223,7 @@ func adiciona_ignorancia():
 	var posicion_ignorancia_x = randf_range(area_min_x, area_max_x)
 	var posicion_ignorancia_y = randf_range(area_min_y, area_max_y)
 	ignorancia.position = Vector2(posicion_ignorancia_x, posicion_ignorancia_y)
+	
 # Define una dirección de movimiento aleatoria de ignorancia
 	var direction = randf_range(-PI / 4, PI / 4)
 	ignorancia.rotation = direction

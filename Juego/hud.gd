@@ -89,19 +89,19 @@ func generar_ecuacion_suma():
 func generar_ecuacion_resta():
 	ecuacion_actual = str(operador_1) + " - " + str(operador_2) + " = ?"
 	resultado_esperado = operador_1 - operador_2
-	ecuacion_resuelta = str(operador_1) + " + " + str(operador_2) + " = " + str(resultado_esperado)
+	ecuacion_resuelta = str(operador_1) + " - " + str(operador_2) + " = " + str(resultado_esperado)
 
 func generar_ecuacion_multiplicacion():
 	ecuacion_actual = str(operador_1) + " * " + str(operador_2) + " = ?"
 	resultado_esperado = operador_1 * operador_2
-	ecuacion_resuelta = str(operador_1) + " + " + str(operador_2) + " = " + str(resultado_esperado)
+	ecuacion_resuelta = str(operador_1) + " * " + str(operador_2) + " = " + str(resultado_esperado)
 
 func generar_ecuacion_division():
 	operador_2 = randi_range(1, 10)
 	resultado_esperado = randi_range(1, 10)
 	operador_1 = resultado_esperado * operador_2
 	ecuacion_actual = str(operador_1) + " / " + str(operador_2) + " = ?"
-	ecuacion_resuelta = str(operador_1) + " + " + str(operador_2) + " = " + str(resultado_esperado)
+	ecuacion_resuelta = str(operador_1) + " / " + str(operador_2) + " = " + str(resultado_esperado)
 
 func armar_ecuacion() -> String:
 	return ecuacion_actual	

@@ -172,9 +172,9 @@ func start():
 	position = posicionInicialAstronauta
 	
 	## Genera una posición aleatoria dentro del área definida
-	#var posicionInicialAstronauta_x = randf_range(area_min_x, area_max_x)
-	#var posicionInicialAstronauta_y = randf_range(area_min_y, area_max_y)
-	#posicionInicialAstronauta = Vector2(posicionInicialAstronauta_x, posicionInicialAstronauta_y)
+	var posicionInicialAstronauta_x = randf_range(area_min_x, area_max_x)
+	var posicionInicialAstronauta_y = randf_range(area_min_y, area_max_y)
+	posicionInicialAstronauta = Vector2(posicionInicialAstronauta_x, posicionInicialAstronauta_y)
 	position = posicionInicialAstronauta
 	
 	show()
